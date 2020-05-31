@@ -1,9 +1,11 @@
-﻿namespace Messenger.Infrastructure
+﻿using System.Threading.Tasks;
+
+namespace Messenger.Infrastructure
 {
     public interface IQueue<T> where T : IQueueItem
     {
-        void Enqueue(T message);
+        void Enqueue(T item);
 
-        T Dequeue();
+        Task<T> Dequeue();
     }
 }
