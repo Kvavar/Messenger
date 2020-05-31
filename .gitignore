@@ -1,2 +1,6 @@
 /Messenger/bin/*
 /Messenger/obj/
+/Messenger.Data/obj/
+/Messenger.Infrastructure/obj/
+/Messenger.Data/bin/
+/Messenger.Infrastructure/bin/
