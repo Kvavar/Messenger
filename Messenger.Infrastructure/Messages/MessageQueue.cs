@@ -2,14 +2,14 @@
 
 namespace Messenger.Infrastructure.Messages
 {
-    public class QueueMessage : IMessageQueue
+    public class MessageQueue : IMessageQueue
     {
         public MessageQueueItem Dequeue()
         {
             throw new NotImplementedException();
         }
 
-        public void Enqueue(MessageQueueItem message)
+        public void Enqueue(MessageQueueItem item)
         {
             throw new NotImplementedException();
         }
