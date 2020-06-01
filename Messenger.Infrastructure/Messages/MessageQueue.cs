@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Messenger.Infrastructure.Messages
 {
     public class MessageQueue : IMessageQueue
     {
-        public MessageQueueItem Dequeue()
+        public Task<MessageQueueItem> Dequeue()
         {
             throw new NotImplementedException();
         }
