@@ -1,11 +1,18 @@
 ﻿using System.Threading.Tasks;
+using Messenger.Entities.Queues;
 
 namespace Messenger.Infrastructure
 {
-    public interface IQueue<T> where T : IQueueItem
+    public interface IQueue<TInQueueItem, TOutQueueItem, TInPayLoad, TOutPayLoad, TCommand, TCommandType> 
+        where TInQueueItem : IInQueueItem<TInPayLoad, TCommand, TCommandType>
+        where TOutQueueItem : IOutQueueItem<TOutPayLoad>
+        where TInPayLoad : IPayLoad
+        where TOutPayLoad : IPayLoad
+        where TCommand : IInQueueCommand<TCommandType>
+        where TCommandType : struct
     {
-        void Enqueue(T item);
+        void Enqueue(TInQueueItem item);
 
-        Task<T> Dequeue();
+        Task<TOutQueueItem> Dequeue();
     }
 }

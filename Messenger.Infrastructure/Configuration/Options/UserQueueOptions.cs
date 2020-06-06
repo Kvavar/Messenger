@@ -7,7 +7,9 @@
         {
 
         }
-        public string Name { get; set; }
+
+        public string InQueueName { get; set; }
+        public string OutQueueName { get; set; }
         public string ConnectionString { get; set; }
     }
 }

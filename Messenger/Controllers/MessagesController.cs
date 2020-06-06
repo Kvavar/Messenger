@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Messenger.Infrastructure.Users;
 using Messenger.Infrastructure.Messages;
 using Messenger.Entities;
+using Messenger.Entities.Queues.Users;
+using Messenger.Entities.Users;
 
 namespace Messenger.Controllers
 {
@@ -22,7 +24,9 @@ namespace Messenger.Controllers
         [HttpPost("send")]
         public async Task<ActionResult> Send(long senderId, long receiverId, [FromBody] Message message)
         {
-            _usersQueue.Enqueue(new UserQueueItem(message.Text));//check user
+            var user = new User("test", "test@test.org");
+            var command = new UserInQueueCommand(UserInQueueCommandType.Create);
+            _usersQueue.Enqueue(new UserInQueueItem(command, user));//check user
             var result = await _usersQueue.Dequeue();
             
             return Accepted(result);
