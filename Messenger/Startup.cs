@@ -7,6 +7,7 @@ using Messenger.Infrastructure.Users;
 using Messenger.Infrastructure.Messages;
 using Messenger.Infrastructure.Configuration.Options;
 using Microsoft.Extensions.Options;
+using Pricer.IexCloudProvider;
 
 namespace Messenger
 {
@@ -27,6 +28,7 @@ namespace Messenger
             services.Configure<UserQueueOptions>(options => Configuration.GetSection(userQueueOptions.SectionName).Bind(options));
             services.AddSingleton<IUserQueue, UserQueue>();
             services.AddSingleton<IMessageQueue, MessageQueue>();
+            services.AddHttpClient<IexCloudHttpClient, IexCloudHttpClient>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

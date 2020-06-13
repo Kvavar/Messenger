@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Data", "Messenger
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Infrastructure", "Messenger.Infrastructure\Messenger.Infrastructure.csproj", "{B86AB0AC-57B6-42BF-95CB-BCCC22D85BE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger.Entities", "Messenger.Entities\Messenger.Entities.csproj", "{178DB510-AC50-4EB5-8F80-1CF94C2BC610}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Entities", "Messenger.Entities\Messenger.Entities.csproj", "{178DB510-AC50-4EB5-8F80-1CF94C2BC610}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricer.IexCloudProvider", "IexCloudProvider\Pricer.IexCloudProvider.csproj", "{337F9C2E-200A-4F11-8EC3-9E96A0895A89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{178DB510-AC50-4EB5-8F80-1CF94C2BC610}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178DB510-AC50-4EB5-8F80-1CF94C2BC610}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178DB510-AC50-4EB5-8F80-1CF94C2BC610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
