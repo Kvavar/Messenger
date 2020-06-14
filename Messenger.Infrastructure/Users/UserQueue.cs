@@ -43,7 +43,7 @@ namespace Messenger.Infrastructure.Users
 
         public async Task<UserOutQueueItem> Dequeue()
         {
-            if (!_outQueueClient.Exists())
+            if (!await _outQueueClient.ExistsAsync())
             {
                 throw new InvalidOperationException("User outqueue client does not exist.");
             }
