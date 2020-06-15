@@ -38,7 +38,30 @@ namespace Pricer.IexCloudProvider
 
         private void AddPublicToken(ref string url)
         {
-            url = url.Contains("?") ? $"{url}&token={_publicToken}" : $"{url}?token={_publicToken}";
+            AddArgument(ref url, "token", _publicToken);
+        }
+
+        private void AddFormat(ref string url, ResponseFormatType format)
+        {
+            switch (format)
+            {
+                case ResponseFormatType.Json:
+                    AddArgument(ref url, "format", "json");
+                    break;
+                case ResponseFormatType.Csv:
+                    AddArgument(ref url, "format", "csv");
+                    break;
+                case ResponseFormatType.Plain:
+                    AddArgument(ref url, "format", "psv");
+                    break;
+                default:
+                    throw new NotSupportedException($"{nameof(format)} is not supported.");
+            }
+        }
+
+        private void AddArgument(ref string url, string name, string value)
+        {
+            url = url.Contains("?") ? $"{url}&{name}={value}" : $"{url}?{name}={value}";
         }
     }
 }

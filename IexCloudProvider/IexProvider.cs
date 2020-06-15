@@ -21,5 +21,7 @@ namespace Pricer.IexCloudProvider
 
             return JsonConvert.DeserializeObject<List<TimeseriesId>>(response);
         }
+
+        
     }
 }

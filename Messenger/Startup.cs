@@ -9,6 +9,7 @@ using Messenger.Infrastructure.Configuration.Options;
 using Messenger.Infrastructure.Configuration.Options.Pricers;
 using Microsoft.Extensions.Options;
 using Pricer.IexCloudProvider;
+using Pricer.IexCloudProvider.IexReferenceData;
 
 namespace Messenger
 {
@@ -33,6 +34,7 @@ namespace Messenger
             services.AddSingleton<IMessageQueue, MessageQueue>();
             services.AddHttpClient<IIexHttpClient, IexHttpClient>();
             services.AddScoped<IIexProvider, IexProvider>();
+            services.AddScoped<IIexReferenceDataProvider, IexReferenceDataProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
