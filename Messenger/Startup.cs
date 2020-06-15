@@ -7,7 +7,6 @@ using Messenger.Infrastructure.Users;
 using Messenger.Infrastructure.Messages;
 using Messenger.Infrastructure.Configuration.Options;
 using Messenger.Infrastructure.Configuration.Options.Pricers;
-using Microsoft.Extensions.Options;
 using Pricer.IexCloudProvider;
 using Pricer.IexCloudProvider.IexReferenceData;
 

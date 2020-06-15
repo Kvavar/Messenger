@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IexCloudProvider\Pricer.IexCloudProvider.csproj" />
     <ProjectReference Include="..\Messenger.Infrastructure\Messenger.Infrastructure.csproj" />
+    <ProjectReference Include="..\Pricer.IexCloudProvider\Pricer.IexCloudProvider.csproj" />
   </ItemGroup>
 
 

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Entities", "Messenger.Entities\Messenger.Entities.csproj", "{178DB510-AC50-4EB5-8F80-1CF94C2BC610}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricer.IexCloudProvider", "IexCloudProvider\Pricer.IexCloudProvider.csproj", "{337F9C2E-200A-4F11-8EC3-9E96A0895A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricer.IexCloudProvider", "Pricer.IexCloudProvider\Pricer.IexCloudProvider.csproj", "{337F9C2E-200A-4F11-8EC3-9E96A0895A89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
