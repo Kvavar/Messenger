@@ -37,11 +37,21 @@ namespace Messenger.Controllers
             return Json(container);
         }
 
-        [HttpGet("symbols")]
+        [HttpGet("fxsymbols")]
         public async Task<ActionResult> GetAvailableFxSymbols()
         {
             var symbols = await _refProvider.GetAvailableFxSymbolsAsync();
             var result = symbols.Pairs.Select(s => s.Symbol).ToList();
+            var container = new IexContainer<IReadOnlyList<string>>(result, _attributionTitle, _attributionUrl);
+
+            return Json(container);
+        }
+
+        [HttpGet("iexsymbols")]
+        public async Task<ActionResult> GetAvailableIexSymbols()
+        {
+            var symbols = await _refProvider.GetAvailableIexSymbolsAsync();
+            var result = symbols.Select(s => s.Symbol).ToList();
             var container = new IexContainer<IReadOnlyList<string>>(result, _attributionTitle, _attributionUrl);
 
             return Json(container);

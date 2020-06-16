@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Messenger.Entities.IexReferenceData;
 using Newtonsoft.Json;
 
@@ -8,6 +9,7 @@ namespace Pricer.IexCloudProvider.IexReferenceData
     {
         private const string Endpoint = "ref-data";
         public const string Suffix = "symbols";
+
         private readonly IIexHttpClient _httpClient;
 
         public IexReferenceDataProvider(IIexHttpClient httpClient)
@@ -21,6 +23,14 @@ namespace Pricer.IexCloudProvider.IexReferenceData
             var response = await _httpClient.GetAsync(url);
 
             return JsonConvert.DeserializeObject<FxSymbolsContainer>(response);
+        }
+
+        public async Task<IReadOnlyList<IexSymbol>> GetAvailableIexSymbolsAsync()
+        {
+            var url = $"{Endpoint}/iex/{Suffix}";
+            var response = await _httpClient.GetAsync(url);
+
+            return JsonConvert.DeserializeObject<IReadOnlyList<IexSymbol>>(response);
         }
     }
 }
