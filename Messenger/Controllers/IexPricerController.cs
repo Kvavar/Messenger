@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Messenger.Entities.IexPricer;
+using Messenger.Entities.IexStock;
 using Messenger.Infrastructure.Configuration.Options.Pricers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -64,11 +66,28 @@ namespace Messenger.Controllers
             return Json(container);
         }
 
-        [HttpGet("optionexp/{symbol}")]
+        [HttpGet("option/{symbol}")]
         public async Task<ActionResult> GetAvailableExpirations(string symbol)
         {
             var expiries = await _stockProvider.GetAvailableExpirationsAsync(symbol);
             var container = new IexContainer<IReadOnlyList<DateTime>>(expiries, _attributionTitle, _attributionUrl);
+
+            return Json(container);
+        }
+
+
+        [HttpGet("option/{symbol}/{expiration}/{side}")]
+        public async Task<ActionResult> GetOption(string symbol, string expiration, string side)
+        {
+            var expDate = DateTime.ParseExact(expiration, "yyyyMM", CultureInfo.InvariantCulture);
+
+            if (!Enum.TryParse(side, out OptionSide optionSide))
+            {
+                return Json(new IexContainer<string>("Invalid option side.", _attributionTitle, _attributionUrl));
+            }
+
+            var option = await _stockProvider.GetOptionAsync(symbol, expDate, optionSide);
+            var container = new IexContainer<Option>(option, _attributionTitle, _attributionUrl);
 
             return Json(container);
         }
