@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Pricer.IexCloudProvider;
 using Pricer.IexCloudProvider.IexReferenceData;
+using Pricer.IexCloudProvider.IexStock;
 
 namespace Messenger.Controllers
 {
@@ -17,13 +18,19 @@ namespace Messenger.Controllers
     {
         private readonly IIexProvider _iexProvider;
         private readonly IIexReferenceDataProvider _refProvider;
+        private readonly IIexOptionProvider _stockProvider;
         private readonly string _attributionTitle;
         private readonly string _attributionUrl;
 
-        public IexPricerController(IIexProvider iexProvider, IIexReferenceDataProvider refProvider, IOptions<IexPricerOptions> options)
+        public IexPricerController(
+            IIexProvider iexProvider, 
+            IIexReferenceDataProvider refProvider, 
+            IIexOptionProvider stockProvider,
+            IOptions<IexPricerOptions> options)
         {
             _iexProvider = iexProvider;
             _refProvider = refProvider;
+            _stockProvider = stockProvider;
             _attributionTitle = options.Value.Attribution.Title ?? throw new ArgumentNullException(nameof(_attributionTitle));
             _attributionUrl = options.Value.Attribution.Url ?? throw new ArgumentNullException(nameof(_attributionUrl));
         }
@@ -53,6 +60,15 @@ namespace Messenger.Controllers
             var symbols = await _refProvider.GetAvailableIexSymbolsAsync();
             var result = symbols.Select(s => s.Symbol).ToList();
             var container = new IexContainer<IReadOnlyList<string>>(result, _attributionTitle, _attributionUrl);
+
+            return Json(container);
+        }
+
+        [HttpGet("optionexp/{symbol}")]
+        public async Task<ActionResult> GetAvailableExpirations(string symbol)
+        {
+            var expiries = await _stockProvider.GetAvailableExpirationsAsync(symbol);
+            var container = new IexContainer<IReadOnlyList<DateTime>>(expiries, _attributionTitle, _attributionUrl);
 
             return Json(container);
         }
