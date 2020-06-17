@@ -81,13 +81,13 @@ namespace Messenger.Controllers
         {
             var expDate = DateTime.ParseExact(expiration, "yyyyMM", CultureInfo.InvariantCulture);
 
-            if (!Enum.TryParse(side, out OptionSide optionSide))
+            if (!Enum.TryParse(side, ignoreCase:true, out OptionSide optionSide))
             {
                 return Json(new IexContainer<string>("Invalid option side.", _attributionTitle, _attributionUrl));
             }
 
-            var option = await _stockProvider.GetOptionAsync(symbol, expDate, optionSide);
-            var container = new IexContainer<Option>(option, _attributionTitle, _attributionUrl);
+            var options = await _stockProvider.GetOptionAsync(symbol, expDate, optionSide);
+            var container = new IexContainer<IReadOnlyList<Option>>(options, _attributionTitle, _attributionUrl);
 
             return Json(container);
         }

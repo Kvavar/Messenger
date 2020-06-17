@@ -8,6 +8,6 @@ namespace Pricer.IexCloudProvider.IexStock
     public interface IIexOptionProvider
     {
         Task<IReadOnlyList<DateTime>> GetAvailableExpirationsAsync(string symbol);
-        Task<Option> GetOptionAsync(string symbol, DateTime expiration, OptionSide side);
+        Task<IReadOnlyList<Option>> GetOptionAsync(string symbol, DateTime expiration, OptionSide side);
     }
 }

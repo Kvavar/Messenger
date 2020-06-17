@@ -1,4 +1,5 @@
 ﻿using System;
+using Messenger.Entities.IexStock.Converters;
 using Newtonsoft.Json;
 
 namespace Messenger.Entities.IexStock
@@ -7,7 +8,10 @@ namespace Messenger.Entities.IexStock
     {
         [JsonProperty("symbol")] public string Symbol { get; set; }
         [JsonProperty("id")] public string Id { get; set; }
-        [JsonProperty("expirationDate")] public DateTime ExpirationDate { get; set; }
+        
+        [JsonProperty("expirationDate")] 
+        [JsonConverter(typeof(ExpirationDateConverter))]
+        public DateTime ExpirationDate { get; set; }
         [JsonProperty("contractSize")] public int ContractSize { get; set; }
         [JsonProperty("strikePrice")] public decimal StrikePrice { get; set; }
         [JsonProperty("closingPrice")] public decimal ClosingPrice { get; set; }

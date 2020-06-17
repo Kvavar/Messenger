@@ -37,8 +37,9 @@ namespace Pricer.IexCloudProvider.IexStock
             return result;
         }
 
-        public async Task<Option> GetOptionAsync(string symbol, DateTime expiration, OptionSide side)
+        public async Task<IReadOnlyList<Option>> GetOptionAsync(string symbol, DateTime expiration, OptionSide side)
         {
+            //todo consider validation
             if (string.IsNullOrWhiteSpace(symbol))
             {
                 throw new ArgumentException($"Argument {nameof(symbol)} cannot be empty.");
@@ -55,9 +56,7 @@ namespace Pricer.IexCloudProvider.IexStock
             var url = $"{Endpoint}/{symbol}/{Suffix}/{exp}/{optionSide}";
             var response = await _httpClient.GetAsync(url);
 
-            var result = JsonConvert.DeserializeObject<Option>(response);
-
-            return result;
+            return JsonConvert.DeserializeObject<IReadOnlyList<Option>>(response);
         }
     }
 }
