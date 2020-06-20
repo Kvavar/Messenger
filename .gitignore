@@ -10,3 +10,6 @@
 /IexCloudProvider/bin/
 /Pricer.IexCloudProvider/bin
 /Pricer.IexCloudProvider/obj
+/Pricer.GreeksCalculator/obj
+/Pricer.Tests/bin/Debug
+/Pricer.Tests/obj
