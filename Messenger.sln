@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messenger.Entities", "Messe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pricer.IexCloudProvider", "Pricer.IexCloudProvider\Pricer.IexCloudProvider.csproj", "{337F9C2E-200A-4F11-8EC3-9E96A0895A89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pricer.GreeksCalculator", "Pricer.GreeksCalculator\Pricer.GreeksCalculator.csproj", "{89C10693-2BF4-428C-B0EA-2DEFB1F33759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pricer.Tests", "Pricer.Tests\Pricer.Tests.csproj", "{C468685C-8A42-4444-8A3A-02471026EDD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{337F9C2E-200A-4F11-8EC3-9E96A0895A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89C10693-2BF4-428C-B0EA-2DEFB1F33759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89C10693-2BF4-428C-B0EA-2DEFB1F33759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89C10693-2BF4-428C-B0EA-2DEFB1F33759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89C10693-2BF4-428C-B0EA-2DEFB1F33759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C468685C-8A42-4444-8A3A-02471026EDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C468685C-8A42-4444-8A3A-02471026EDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C468685C-8A42-4444-8A3A-02471026EDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C468685C-8A42-4444-8A3A-02471026EDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
