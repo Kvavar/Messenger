@@ -13,3 +13,6 @@
 /Pricer.GreeksCalculator/obj
 /Pricer.Tests/bin/Debug
 /Pricer.Tests/obj
+/Pricer.GreeksCalculator/bin
+/Pricer.Math/bin
+/Pricer.Math/obj
