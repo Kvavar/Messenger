@@ -2,47 +2,12 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using Pricer.Math;
 
 namespace Pricer.Tests
 {
     class Program
     {
-        private static int ΦSequencePrecision = 10;
-
-        static void Main(string[] args)
-        {
-            var result = new List<(double, double)>();
-            for (var x = -2.9; x < 2.9; x += 0.01)
-            {
-                var y = CalculateΦ(x);
-                result.Add((x, y));
-            }
-
-            Draw(result, 400, 400, Color.Blue);
-            result.Clear();
-
-
-            Console.WriteLine("Done");
-            Console.ReadLine();
-        }
-
-        public static double CalculateΦ(double x)
-        {
-            var pow = Math.Pow(Math.E, -(x * x / 2.0));
-            var multiplier = (1 / Math.Sqrt(2 * Math.PI)) * pow;
-
-            var sequenceSum = 0.0;
-            var doubleFactorial = 1;
-            for (var i = 0; i < ΦSequencePrecision; i++)
-            {
-                var n = 2 * i + 1;
-                doubleFactorial *= n;
-                sequenceSum += Math.Pow(x, n) / doubleFactorial;
-            }
-
-            return 0.5 + multiplier * sequenceSum;
-        }
-
         public static void Draw(List<(double, double)> points, int startX, int startY, Color color)
         {
             Bitmap bitmap;
@@ -73,7 +38,7 @@ namespace Pricer.Tests
         {
             for (var x =  - radius; x <= radius; x++)
             {
-                var absSqrt = Math.Sqrt((radius * radius) - (x * x));
+                var absSqrt = System.Math.Sqrt((radius * radius) - (x * x));
                 var y1 = absSqrt;
                 var y2 = - absSqrt;
                 bitmap.SetPixel(centerX + x, centerY + (int)(y1), color);
